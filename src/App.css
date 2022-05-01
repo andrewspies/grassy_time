@@ -1,0 +1,17 @@
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+
+.App {
+  text-align: center;
+}
+
+.bp4-button {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1) !important;
+  text-transform: uppercase !important;
+}
+
+.bp4-input {
+  box-shadow: none !important;
+  border-radius: 500px !important;
+  padding-left: 20px;
+}

@@ -1,0 +1,31 @@
+.login {
+  padding: 10vw;
+}
+
+.login-title {
+  font-size: 20pt;
+  padding-bottom: 20px;
+  padding-top: 0;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.error-content {
+  text-align: center;
+  background-color: white;
+  padding: 10px 20px 20px;
+  width: 80%;
+  left: 10%;
+  top: 35%;
+  border-radius: 10px;
+}
+
+.error-message {
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 700;
+}

@@ -1,0 +1,29 @@
+.login {
+	padding: 10vw;
+}
+
+.login-title {
+	font-size: 20pt;
+	padding-bottom: 20px;
+	padding-top: 0;
+	color: #fff;
+}
+
+.error-content {
+	text-align: center;
+	background-color: white;
+	padding: 10px 20px 20px;
+	width: 80%;
+	left: 10%;
+	top: 35%;
+	border-radius: 10px;
+}
+
+a.login-link {
+	text-transform: none;
+	font-size: 11pt;
+	color: white;
+	margin-top: 20px;
+	display: block;
+	text-decoration: underline;
+}

@@ -1,0 +1,11 @@
+.dash-container {
+    background: #0e5e83;
+    min-height: 100vh;
+}
+.dark {
+    background: #0a425c;
+}
+.subtitle.dashboard {
+    font-size: 12pt;
+    color: #333;
+}
