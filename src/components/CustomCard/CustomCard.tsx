@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Elevation } from "@blueprintjs/core";
+import { Button, Card } from "@mui/material";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -12,11 +12,11 @@ interface Props {
 const CustomCard: React.FC<Props> = (props) => {
 
   return (
-    <Card interactive={true} elevation={Elevation.TWO}>
+    <Card>
       <h3>{props.title}</h3>
       <p>{props.data}</p>
       <Link to={props.buttonLink}>
-        <Button intent="primary" small={true}>{props.buttonLabel}</Button>
+        <Button color="primary">{props.buttonLabel}</Button>
       </Link>
 
     </Card>
