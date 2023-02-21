@@ -1,18 +1,19 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { 
-  TextField, 
-  ButtonGroup, 
-  Button, 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  DialogActions, 
-  DialogContentText } from '@mui/material';
+import {
+  Box,
+  TextField,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  DialogContentText,
+  Grid
+} from '@mui/material';
 import './style.css';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { validateErrors } from '../../utils/validators';
-import { Box } from '@mui/material';
 
 interface Props {
   logo: string,
@@ -42,7 +43,7 @@ const Login: React.FC<Props> = (props: Props) => {
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    
+
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
@@ -70,8 +71,8 @@ const Login: React.FC<Props> = (props: Props) => {
   }, [user, setUser, nav]);
 
   return (
-    <Box className="container login" sx={{ backgroundColor: "primary.dark" }}>
-      <div className="header ">
+    <Box className="container login">
+      <div className="header">
         <div className="logo">
           <img src={props.logo} alt={props.logoAltText} />
         </div>
@@ -97,8 +98,8 @@ const Login: React.FC<Props> = (props: Props) => {
           >
           </TextField>
           <TextField
-            sx={{ marginBottom: '10px' }}
-            inputProps={{ inputMode: 'email', autoComplete: 'on' }}
+            sx={{ marginBottom: "10px" }}
+            inputProps={{ inputMode: "email", autoComplete: "on" }}
             name="password"
             id="password"
             type="password"
@@ -112,15 +113,20 @@ const Login: React.FC<Props> = (props: Props) => {
             !!validateErrors &&
             <div className="error-message">{error}</div>
           }
-          <ButtonGroup variant="contained">
-            <Button type="submit" color="secondary">{props.loginBtnLabel}</Button>
-            <Button component={Link} to="/Signup" color="primary">{props.signUpBtnLabel}</Button>
-          </ButtonGroup>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Button variant="outlined" color="secondary" type="submit">{props.loginBtnLabel}</Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Button sx={{borderColor: "#fff", color: "#fff"}} variant="outlined" component={Link} to="/Signup">{props.signUpBtnLabel}</Button>
+            </Grid>
+
+          </Grid>
         </form>
       </div>
       <div className="overlay-container">
         <Dialog
-        sx={{textAlign: 'center'}}
+          sx={{ textAlign: 'center' }}
           open={isOpen}
           onClose={toggleOverlay}
         >
@@ -129,8 +135,8 @@ const Login: React.FC<Props> = (props: Props) => {
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              {error} 
-              <a style={{color: "#f44336" }} href="mailto:support@grassy-time.co.za">support@grassy-time.co.za</a>
+              {error}
+              <a style={{ color: "#f44336" }} href="mailto:support@grassy-time.co.za">support@grassy-time.co.za</a>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
