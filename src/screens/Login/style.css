@@ -1,11 +1,13 @@
-.login {
-  padding: 10vw;
-}
-
 .login-title {
   font-size: 20pt;
-  padding-bottom: 20px;
   padding-top: 0;
+  color: #ffffff;
+}
+
+.logo {
+  display: block;
+  box-sizing: content-box;
+  padding: 7.5vw;
 }
 
 .logo img {
@@ -28,4 +30,8 @@
   margin-bottom: 10px;
   text-align: center;
   font-weight: 700;
+}
+
+.form-container {
+  padding: 0 10vw;
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import * as firebaseConfig from './firebase.config.json';
 import './App.css';
@@ -7,10 +7,10 @@ import Home from './screens/Home';
 import logo from './assets/logo/Logo.png';
 import Login from './screens/Login';
 import Dashboard from './screens/Dashboard';
+import Profile from './screens/Profile';
 import { getAuth } from 'firebase/auth';
 import Signup from './screens/Signup/Signup';
-
-
+import { Box } from '@mui/material';
 
 const App = () => {
 
@@ -20,15 +20,27 @@ const App = () => {
 
   const app = initializeApp(firebase.firebaseConfig);
   const auth = getAuth(app);
+  const nav = useNavigate();
 
   const RequireAuth = ({ children }: { children: JSX.Element }) => {
-    if (!auth.currentUser) {
+    if (!auth.currentUser?.uid) {
       return <Navigate to="/" replace />;
     }
     return children;
   }
 
+  const isLoggedIn = useCallback(() => {
+    return auth.currentUser?.uid !== undefined || auth.currentUser?.uid !== null;
+  }, [auth]);
+
   return (
+    <Box
+      sx={{
+        width: "100%",
+        backgroundColor: "primary.dark",
+        boxSizing: "border-box"
+      }}
+    >
       <div className="App">
         <Routes>
           <Route path="/" element={
@@ -78,8 +90,17 @@ const App = () => {
             </RequireAuth>
           }>
           </Route>
+          <Route path='/Profile' element={
+            <RequireAuth>
+              <Profile
+                username='Jocky Nash'
+              />
+            </RequireAuth>
+          }></Route>
         </Routes>
       </div>
+    </Box>
+
   );
 }
 

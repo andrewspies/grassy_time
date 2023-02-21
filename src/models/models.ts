@@ -1,4 +1,4 @@
-export interface LoginResponse {
+export interface User {
     id: string;
     displayName: string;
     firstname: string;
